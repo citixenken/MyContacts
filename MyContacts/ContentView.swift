@@ -12,10 +12,15 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            List(contacts) { contact in
-                ContactRow(contact: contact)
+            NavigationView {
+                List(contacts) { contact in
+                    NavigationLink(destination: DetailView(contact: contact)) {
+                        ContactRow(contact: contact)
+                    }
+                }
+                .listStyle(.grouped)
+                .navigationTitle("My Contacts")
             }
-            .listStyle(.grouped)
         }
     }
 }
